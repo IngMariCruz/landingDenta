@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DENTA - Detección de Periodontitis con IA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/denta.png" alt="Clínica DENTA Logo">
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#app">La App</a></li>
+                    <li><a href="#upload">Diagnóstico</a></li>
+                    <li><a href="#register">Registro</a></li>
+                    <li><a href="#about">Sobre Nosotros</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#app">La App</a></li>
+            <li><a href="#upload">Diagnóstico</a></li>
+            <li><a href="#register">Registro</a></li>
+            <li><a href="#about">Sobre Nosotros</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Detección de Periodontitis con IA</h1>
+                <p>Nuestra aplicación utiliza inteligencia artificial para detectar signos tempranos de periodontitis a partir de imágenes dentales.</p>
+                <div class="hero-buttons">
+                    <a href="#upload" class="btn btn-primary">Probar Ahora</a>
+                    <a href="#register" class="btn btn-outline">Registrarse</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/dentadetect.jpeg" alt="App Mockup">
+            </div>
+        </div>
+    </section>
+
+    <!-- App Features -->
+    <section id="app" class="features">
+        <div class="container">
+            <h2>Características de la App</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Diagnóstico Rápido</h3>
+                    <p>Resultados precisos en segundos utilizando algoritmos avanzados de IA.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Alta Precisión</h3>
+                    <p>Más del 95% de precisión en la detección de signos de periodontitis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Detección Temprana</h3>
+                    <p>Identifica signos tempranos para prevenir complicaciones futuras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2>Prueba Nuestro Diagnóstico</h2>
+            <p class="section-description">Sube una imagen dental para recibir un diagnóstico preliminar de periodontitis utilizando nuestra tecnología de IA.</p>
+            
+            <div class="upload-container">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-placeholder" id="uploadPlaceholder">
+                        <i class="fas fa-image"></i>
+                        <p>Arrastra y suelta una imagen aquí o haz clic para seleccionar</p>
+                        <p class="upload-hint">PNG, JPG o GIF (máx. 5MB)</p>
+                    </div>
+                    <div class="uploaded-image-container" id="uploadedImageContainer" style="display: none;">
+                        <img id="uploadedImage" src="#" alt="Imagen seleccionada">
+                        <p id="fileName" class="file-name"></p>
+                    </div>
+                </div>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                
+                <div class="upload-actions" id="uploadActions" style="display: none;">
+                    <button id="analyzeBtn" class="btn btn-primary">Analizar Imagen</button>
+                </div>
+            </div>
+
+            <div class="result-container" id="resultContainer" style="display: none;">
+                <h3>Resultado del Análisis</h3>
+                <div id="resultIcon" class="result-icon"></div>
+                <p id="resultText" class="result-text"></p>
+                <p id="confidenceText" class="confidence-text"></p>
+                <p class="result-disclaimer">Este es un diagnóstico preliminar. Por favor, consulta con un profesional dental para una evaluación completa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="registration-section">
+        <div class="container">
+            <h2>Regístrate para el Congreso</h2>
+            <p class="section-description">Completa el formulario para registrarte en nuestro congreso y obtener acceso anticipado a la aplicación.</p>
+            
+            <div class="form-container">
+                <form id="registrationForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+                            <span class="error-message" id="nombreError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos</label>
+                            <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos">
+                            <span class="error-message" id="apellidosError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="tu@email.com">
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="Tu teléfono">
+                            <span class="error-message" id="telefonoError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="institucion">Institución</label>
+                            <input type="text" id="institucion" name="institucion" placeholder="Tu institución">
+                            <span class="error-message" id="institucionError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="especialidad">Especialidad</label>
+                            <select id="especialidad" name="especialidad">
+                                <option value="">Selecciona tu especialidad</option>
+                                <option value="odontologia_general">Odontología General</option>
+                                <option value="periodoncia">Periodoncia</option>
+                                <option value="endodoncia">Endodoncia</option>
+                                <option value="ortodoncia">Ortodoncia</option>
+                                <option value="cirugia_oral">Cirugía Oral</option>
+                                <option value="odontopediatria">Odontopediatría</option>
+                                <option value="estudiante">Estudiante</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <span class="error-message" id="especialidadError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="aceptaTerminos" name="aceptaTerminos">
+                        <label for="aceptaTerminos">Acepto los términos y condiciones y la política de privacidad</label>
+                    </div>
+                    <span class="error-message" id="aceptaTerminosError"></span>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">Registrarse</button>
+                </form>
+
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h3>¡Registro Completado!</h3>
+                    <p>Gracias por registrarte. Hemos enviado un correo de confirmación a tu dirección de email.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>Sobre DENTA</h2>
+            <div class="about-content">
+                <div class="about-info">
+                    <img src="images/denta.png" alt="Clínica DENTA" class="about-logo">
+                    <p>Clínica DENTA es líder en servicios odontológicos de alta calidad. Nuestro compromiso con la innovación nos ha llevado a desarrollar esta aplicación para la detección temprana de periodontitis, mejorando la salud bucal de nuestros pacientes.</p>
+                    <div class="about-links">
+                        <a href="https://clinicadenta.com/" target="_blank" rel="noopener noreferrer">Visitar sitio web</a>
+                    </div>
+                </div>
+                <div class="about-partners">
+                    <div class="partners-grid">
+                        <img src="images/usb.png" alt="Universidad de San Buenaventura" class="partner-logo">
+                        <img src="images/logo_blanco.png" alt="PADIA" class="partner-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="images/denta-logo-white.png" alt="Clínica DENTA" class="footer-logo">
+                    <p>Clínica DENTA es líder en servicios odontológicos de alta calidad. Nuestra app de detección de periodontitis utiliza inteligencia artificial para mejorar la salud bucal.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Enlaces</h3>
+                        <ul>
+                            <li><a href="#app">La App</a></li>
+                            <li><a href="#upload">Diagnóstico</a></li>
+                            <li><a href="#register">Registro</a></li>
+                            <li><a href="#about">Sobre Nosotros</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contacto</h3>
+                        <ul>
+                            <li>info@clinicadenta.com</li>
+                            <li>+34 123 456 789</li>
+                            <li>Madrid, España</li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Síguenos</h3>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Clínica DENTA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
